@@ -115,18 +115,14 @@
   </body>
 </html>
 <script>
-var dataArray=JSON.parse(localStorage.getItem('loginData')) || [];
+
 function addDataLocalStorage(){
     console.log('shakir');
 var name = document.getElementById('name').value;
 var email = document.getElementById('email').value;
-var obj={
-    name,
-    email
-};
 
-dataArray.push(obj);
-localStorage.setItem("loginData",JSON.stringify(dataArray));
+localStorage.setItem("name",(name));
+localStorage.setItem("email",(email));
 
 };
 </script>
