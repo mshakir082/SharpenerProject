@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  const posts = [
+    {
+      title: "post one",
+      body: "this is post one",
+      createdtime: new Date().getTime(),
+    },
+
+    {
+      title: "post two",
+      body: "this is post two",
+      createdtime: new Date().getTime(),
+    },
+
+  ];
+
+  let intervalId = 0;
+
+  function getposts() {
+    clearInterval(intervalId);
+
+    intervalId = setInterval(() => {
+
+      let output = "";
+      posts.forEach((post, index) => {
+        output += `<li>${post.title} - last updated ${
+          (new Date().getTime() - post.createdtime) / 1000
+        } seconds ago</li>`;
+      });
+
+      document.body.innerHTML = output;
+    }, 1000);
+  }
+
+  function createpost(post, callback) {
+    setTimeout(() => {
+      posts.push(post);
+      callback();
+    }, 2000);
+  }
+
+  function create4thpost(post, callback) {
+    setTimeout(() => {
+      posts.push(post);
+     callback();
+    }, 6000);
+  }
+  getposts();
+
+  createpost(
+    {
+      title: " post three",
+      body: "this is post three",
+      createdtime: new Date().getTime(),
+    },
+    getposts
+  );
+
+  create4thpost(
+    {
+      title: " post four",
+      body: "this is post four",
+      createdtime: new Date().getTime(),
+    },
+    getposts
+  );
+</script>
