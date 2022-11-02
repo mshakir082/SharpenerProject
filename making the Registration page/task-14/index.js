@@ -70,7 +70,7 @@ const displayData = (formData) => {
               description,
               category
            };
-           console.log(obj);
+           
            axios.put(`https://crudcrud.com/api/138e752029044dad9b6a30834c63faf5/appoinmentData/${el._id}`,obj)
            .then(res=>getData())
            .catch(err=>console.log(err));
