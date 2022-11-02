@@ -40,7 +40,9 @@ const displayData = (formData) => {
     btnDelete.innerText = 'Expense delete';
     btnDelete.addEventListener('click', () => {
       
-      console.log('Delete');
+     axios.delete(`https://crudcrud.com/api/138e752029044dad9b6a30834c63faf5/appoinmentData/${el._id}`)
+     .then(res=>getData()) 
+      
     })
     let btnEdit = document.createElement('button');
 
@@ -63,7 +65,15 @@ const displayData = (formData) => {
         let expenseamount = document.getElementById('expenseamount').value;
         let description = document.getElementById('description').value;
         let category = document.getElementById('category').value;
-        console.log('Update');
+        let obj={
+              expenseamount,
+              description,
+              category
+           };
+           console.log(obj);
+           axios.put(`https://crudcrud.com/api/138e752029044dad9b6a30834c63faf5/appoinmentData/${el._id}`,obj)
+           .then(res=>getData())
+           .catch(err=>console.log(err));
 
       })
     })
