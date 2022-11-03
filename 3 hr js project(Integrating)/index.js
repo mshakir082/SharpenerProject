@@ -1,3 +1,4 @@
+// whenever code run first time window.load (get the data)
 window.addEventListener("load",()=>{
 
   axios.get('https://crudcrud.com/api/138e752029044dad9b6a30834c63faf5/appoinmentData')
@@ -10,12 +11,12 @@ window.addEventListener("load",()=>{
 const getData=()=>{
 
   axios.get('https://crudcrud.com/api/138e752029044dad9b6a30834c63faf5/appoinmentData')
-  .then(res=>{
-      console.log(res.data)
-      displayData(res.data)
-  })
+  .then(res=>displayData(res.data))
   .catch(err=>console.log(err));
 }
+
+// Show the Data on Screen
+
 const displayData = (formData) => {
 
   document.getElementById('items').innerHTML = null;
@@ -84,8 +85,7 @@ const displayData = (formData) => {
   })
 }
 
-
-// Add new Data list------------------------------
+// Submit New Data
 
 var form = document.querySelector('.form-inline');
 form.addEventListener('submit', (e) => {
